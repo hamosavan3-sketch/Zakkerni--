@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سياسة الخصوصية - ذكّرني (Zakkerni)</title>
+<style>
+  :root {
+    --primary: #4F5FD9;
+    --primary-dark: #3B49B8;
+    --bg: #F5F6FB;
+    --surface: #FFFFFF;
+    --text: #1C1D2E;
+    --text-muted: #5A5C74;
+    --border: #E3E4F0;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E0F1A;
+      --surface: #171827;
+      --text: #EDEDF7;
+      --text-muted: #A6A8C4;
+      --border: #2A2C42;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E0F1A;
+    --surface: #171827;
+    --text: #EDEDF7;
+    --text-muted: #A6A8C4;
+    --border: #2A2C42;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+    line-height: 1.8;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+    z-index: 10;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; }
+  .brand .icon { font-size: 1.4rem; }
+  .lang-toggle {
+    display: flex;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    padding: 3px;
+  }
+  .lang-toggle button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .lang-toggle button.active { background: #fff; color: var(--primary-dark); font-weight: 700; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+  h1.page-title { font-size: 1.4rem; margin: 0 0 4px; }
+  .updated { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 24px; }
+  section.policy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  section.policy-card h2 {
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+    color: var(--primary);
+  }
+  section.policy-card p { margin: 0; color: var(--text); white-space: pre-line; font-size: 0.95rem; }
+  a { color: var(--primary); }
+  footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 30px;
+  }
+  [dir="ltr"] body { direction: ltr; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="icon">🔒</span><span id="brandTitle">ذكّرني - سياسة الخصوصية</span></div>
+      <div class="lang-toggle">
+        <button id="btnAr" class="active" onclick="setLang('ar')">عربي</button>
+        <button id="btnEn" onclick="setLang('en')">English</button>
+      </div>
+    </div>
+  </div>
+  <main>
+    <h1 class="page-title" id="pageTitle">سياسة خصوصية تطبيق ذكّرني (Zakkerni)</h1>
+    <div class="updated" id="updated">آخر تحديث: 2026-09-24</div>
+    <div id="content"></div>
+    <footer id="footerNote">هذه الصفحة نسخة مستضافة من ملف PRIVACY_POLICY.md الموجود في مشروع التطبيق.</footer>
+  </main>
+
+<script>
+const EMAIL = "hamosavan@gmail.com";
+
+const data = {
+  ar: {
+    dir: "rtl",
+    brand: "ذكّرني - سياسة الخصوصية",
+    title: "سياسة خصوصية تطبيق ذكّرني (Zakkerni)",
+    updated: "آخر تحديث: 2026-09-24",
+    footer: "هذه الصفحة نسخة مستضافة من ملف PRIVACY_POLICY.md الموجود في مشروع التطبيق.",
+    sections: [
+      ["مقدمة", "تطبيق «ذكّرني» (Zakkerni) تطبيق تذكيرات يعمل محليًا على جهازك. نحترم خصوصيتك، وهذه السياسة توضح ما يحدث لبياناتك عند استخدام التطبيق.\nباختصار: لا يوجد حساب مستخدم، ولا نجمع تذكيراتك ولا نرسلها إلى أي خادم يملكه المطوّر."],
+      ["البيانات المخزّنة على جهازك", "يحفظ التطبيق على جهازك فقط: عناوين التذكيرات وملاحظاتها ومواعيدها وتكرارها وفئاتها وأولوياتها، والصور التي تختار إرفاقها، ومواقع تذكيرات الموقع، وإعدادات التطبيق.\nتبقى هذه البيانات في مساحة التطبيق الخاصة على جهازك، ويُحذف كل شيء عند إلغاء تثبيت التطبيق أو عند اختيار «حذف جميع البيانات» من الإعدادات."],
+      ["الصلاحيات ولماذا نطلبها", "• الإشعارات والمنبّه الدقيق وعرض التنبيه على الشاشة: لإطلاق التذكير في موعده بالضبط.\n• التشغيل بعد إعادة تشغيل الجهاز، والخدمة الاختيارية «البقاء نشطًا»، واستثناء البطارية: لضمان عدم ضياع التذكيرات بعد إعادة التشغيل أو توفير الطاقة.\n• الموقع (أثناء استخدام التطبيق فقط): لحساب مواقيت الصلاة واتجاه القبلة، ولاختيار مكان يُحفظ مع التذكير. لا يستخدم التطبيق الموقع في الخلفية، وتتم معالجته على جهازك ولا نحتفظ به على أي خادم.\n• الميكروفون: لميزة الإدخال الصوتي فقط، ولا يتم التسجيل إلا عند ضغطك على زر الإدخال الصوتي.\n• الصور: عند إرفاق صورة بالتذكير تختارها أنت من معرض الصور عبر منتقي الصور الرسمي في النظام؛ لا يصل التطبيق إلى بقية صورك ولا يستخدم الكاميرا، وتُحفظ الصورة المرفقة محليًا.\nيمكنك سحب أي صلاحية في أي وقت من إعدادات النظام، وتستمر باقي مزايا التطبيق في العمل."],
+      ["الخدمات الخارجية", "يستخدم التطبيق خدمات طرف ثالث، ولكل منها سياسة خصوصية خاصة بها:\n• إعلانات Google AdMob: يعرض التطبيق إعلانات. قد تجمع Google وشركاؤها معرّف الإعلانات لجهازك وعنوان IP ومعلومات عن الجهاز وتفاعلك مع الإعلانات لعرض الإعلانات وقياس أدائها ومنع الاحتيال. في المناطق التي يتطلب فيها القانون ذلك (مثل الاتحاد الأوروبي والمملكة المتحدة) تظهر لك نافذة موافقة من Google قبل عرض الإعلانات المخصّصة. يمكنك إعادة ضبط معرّف الإعلانات أو إيقاف تخصيص الإعلانات من إعدادات جهازك. التفاصيل: https://policies.google.com/technologies/ads\n• الخرائط (OpenStreetMap): عند فتح خريطة اختيار الموقع يُحمَّل جزء الخريطة من خوادم OpenStreetMap، وبذلك يصلها عنوان IP والمنطقة المعروضة. سياستهم: https://osmfoundation.org/wiki/Privacy_Policy\n• الإدخال الصوتي: تتم معالجة الكلام بواسطة خدمة التعرف على الكلام في جهازك (عادةً خدمات Google)، وقد يُرسَل الصوت إلى خوادمها بحسب إعدادات جهازك.\n• تحويل الإحداثيات إلى عنوان: يتم عبر خدمة الجهاز المدمجة في أندرويد (عادةً عبر خدمات Google Play).\n• نص المصحف: عند قراءة سورة لأول مرة يُحمَّل نصها من خدمة alquran.cloud (api.alquran.cloud) ثم يُخزَّن على جهازك للقراءة بدون اتصال. تستقبل الخدمة عنوان IP ورقم السورة أو الصفحة المطلوبة فقط.\nلا نستخدم أي خدمات تحليلات أخرى ولا نبيع بياناتك."],
+      ["النسخ الاحتياطي", "ميزة النسخ الاحتياطي تنشئ ملفًا على جهازك تختار أنت أين تحفظه أو تشاركه. هذا الملف يحتوي على تذكيراتك، فاحرص على حفظه في مكان آمن. لا يرسل التطبيق أي نسخة احتياطية تلقائيًا."],
+      ["الأطفال", "التطبيق غير موجّه للأطفال دون 13 عامًا، ولا نجمع عمدًا معلومات عنهم."],
+      ["الأمان", "تبقى بياناتك على جهازك ضمن مساحة التطبيق الخاصة المحمية بنظام أندرويد. لا توجد طريقة تخزين إلكترونية آمنة بنسبة 100%، ننصحك بتأمين جهازك بقفل الشاشة."],
+      ["التغييرات على هذه السياسة", "قد نحدّث هذه السياسة من وقت لآخر، وسيظهر تاريخ آخر تحديث أعلاها. استمرارك في استخدام التطبيق بعد التحديث يعني قبولك للنسخة الجديدة."],
+      ["تواصل معنا", "لأي سؤال عن الخصوصية أو لطلب معلومات عن بياناتك: " + EMAIL]
+    ]
+  },
+  en: {
+    dir: "ltr",
+    brand: "Zakkerni - Privacy Policy",
+    title: "Privacy Policy for Zakkerni",
+    updated: "Last updated: 2026-09-24",
+    footer: "This page is a hosted copy of PRIVACY_POLICY.md from the app's project.",
+    sections: [
+      ["Introduction", "Zakkerni is a reminders app that works locally on your device. This policy explains what happens to your data when you use it.\nIn short: there is no user account, and your reminders are not collected or sent to any server owned by the developer."],
+      ["Data stored on your device", "The app stores only on your device: reminder titles, notes, dates, recurrence, categories and priorities, images you choose to attach, locations for location reminders, and app settings.\nThis data stays in the app's private storage and is deleted when you uninstall the app or choose \"Delete all data\" in Settings."],
+      ["Permissions and why we ask for them", "• Notifications, exact alarms and full-screen alerts: to fire reminders exactly on time.\n• Run after device restart, the optional \"Keep alive\" service, and battery-optimization exemption: so reminders are not lost after a reboot or by power saving.\n• Location (only while you use the app): to calculate prayer times and the Qibla direction, and to pick a place saved with a reminder. The app does not use location in the background; it is processed on your device and not stored on any server by us.\n• Microphone: for voice input only, and audio is captured only while you press the voice input button.\n• Photos: when you attach an image to a reminder you pick it yourself through the system photo picker; the app cannot see your other photos and does not use the camera. The attached image is stored locally.\nYou can revoke any permission at any time in system settings; the rest of the app keeps working."],
+      ["Third-party services", "The app uses third-party services, each with its own privacy policy:\n• Google AdMob ads: the app shows ads. Google and its partners may collect your device advertising ID, IP address, device information and ad interactions to serve and measure ads and prevent fraud. Where required by law (e.g. EEA and UK), Google shows a consent form before personalized ads. You can reset your advertising ID or opt out of ad personalization in your device settings. Details: https://policies.google.com/technologies/ads\n• Maps (OpenStreetMap): when you open the location picker, map tiles are loaded from OpenStreetMap servers, which receive your IP address and the map area shown. Their policy: https://osmfoundation.org/wiki/Privacy_Policy\n• Voice input: speech is processed by your device's speech-recognition service (usually Google), and audio may be sent to its servers depending on your device settings.\n• Coordinates-to-address lookup: uses Android's built-in service (usually through Google Play services).\n• Quran text: the first time you read a surah, its text is downloaded from alquran.cloud (api.alquran.cloud) and then stored on your device for offline reading. The service receives your IP address and the surah or page number requested, nothing else.\nWe use no other analytics services and we do not sell your data."],
+      ["Backups", "The backup feature creates a file on your device that you choose where to save or share. It contains your reminders, so keep it somewhere safe. The app never sends backups automatically."],
+      ["Children", "The app is not directed to children under 13 and we do not knowingly collect information from them."],
+      ["Security", "Your data stays on your device in the app's private storage protected by Android. No electronic storage is 100% secure; we recommend protecting your device with a screen lock."],
+      ["Changes to this policy", "We may update this policy from time to time; the last-updated date appears at the top. Continuing to use the app after an update means you accept the new version."],
+      ["Contact us", "For privacy questions or to ask about your data: " + EMAIL]
+    ]
+  }
+};
+
+function render(lang) {
+  const d = data[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = d.dir;
+  document.title = d.brand;
+  document.getElementById('brandTitle').textContent = d.brand;
+  document.getElementById('pageTitle').textContent = d.title;
+  document.getElementById('updated').textContent = d.updated;
+  document.getElementById('footerNote').textContent = d.footer;
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  d.sections.forEach(([h, body]) => {
+    const sec = document.createElement('section');
+    sec.className = 'policy-card';
+    const h2 = document.createElement('h2');
+    h2.textContent = h;
+    const p = document.createElement('p');
+    p.textContent = body;
+    sec.appendChild(h2);
+    sec.appendChild(p);
+    content.appendChild(sec);
+  });
+  document.getElementById('btnAr').classList.toggle('active', lang === 'ar');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  try { localStorage.setItem('zakkerni_privacy_lang', lang); } catch (e) {}
+}
+
+function setLang(lang) { render(lang); }
+
+let initialLang = 'ar';
+try {
+  const saved = localStorage.getItem('zakkerni_privacy_lang');
+  if (saved === 'en' || saved === 'ar') initialLang = saved;
+} catch (e) {}
+render(initialLang);
+</script>
+</body>
+</html>
